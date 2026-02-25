@@ -1,0 +1,43 @@
+package pract;
+
+import java.util.Scanner;
+
+public class SecondLargest {
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter a array elements: ");
+		int [] arr = new int[5];
+		for(int i =0; i <arr.length; i++) {
+			arr[i] = sc.nextInt();
+		}
+		for(int i =0; i <arr.length; i++) {
+			System.out.println(arr[i]);
+			
+		}
+		System.out.println("Second Largest : "+ secondLargest(arr));
+	}
+	
+	public static int secondLargest(int arr[]) {
+		if(arr.length < 2) {
+	        return -1;
+	    }
+		int large = Integer.MIN_VALUE, second = Integer.MIN_VALUE;
+		for(int i =0; i< arr.length; i++) {
+			if(large < arr[i]) {
+				second = large;
+				large = arr[i];
+				
+			}
+			else if(second < arr[i] && arr[i] != large) {
+				second = arr[i];
+			}
+		}
+		  if(second == Integer.MIN_VALUE) {
+		        return -1;  // No second largest
+		    }
+
+		return second;
+	}
+
+}
